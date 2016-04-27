@@ -25,6 +25,8 @@ public class PaintWorkshop extends javax.swing.JFrame {
         initComponents();
         draw = new PencilDraw();
         initiateImagePanel();
+        image = draw.clear(image);
+        this.repaint();
     }
     
     private void initiateImagePanel(){

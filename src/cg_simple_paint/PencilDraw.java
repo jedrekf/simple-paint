@@ -69,8 +69,8 @@ public class PencilDraw {
             for (int x = x1; x <= x2; ++x)
             {
                 //putPixel(x, round(y)); different round for m>0 m<0?
-                pixels[x][(int)y] = black;
-                y += m;
+                pixels[x][Math.round(y)] = black; 
+               y += m;
             }
         }else{
             if(y1>y2){
@@ -82,11 +82,11 @@ public class PencilDraw {
                x2=tempx;
             }
             
-            m = dx==0 ? 0 : (float)(y2-y1)/(float)(x2-x1);
+            m = dx==0 ? 0 : (float)(x2-x1)/(float)(y2-y1);
             
             float x =x1;
             for(int y= y1 ; y< y2;y++){
-                pixels[(int)x][y] = black;
+                pixels[Math.round(x)][y] = black;
                 x += m;
             }
         }      
@@ -131,6 +131,49 @@ public class PencilDraw {
         updateBufferedImage();
        return image;
     }
+    
+    /*int IntensifyPixel(int x, int y, float thickness, float distance)
+    {
+        float cov = coverage(thickness, distance);
+        if ( cov > 0 )
+            putPixel(x, y, lerp(BKG_COLOR, LINE_COLOR, cov));
+        return cov;
+    }
+    int ThickAntialiasedLine(int x1, int y1, int x2, int y2, float thickness)
+    {
+        //initial values in Bresenham;s algorithm
+        int dx = x2 - x1, dy = y2 - y1;
+        int dE = 2*dy, dNE = 2*(dy - dx);
+        int d = 2*dy - dx;
+        int two_v_dx = 0; //numerator, v=0 for the first pixel
+        float invDenom = 1/(2*sqrt(dx*dx + dy*dy)); //inverted denominator
+        float two_dx_invDenom = 2*dx*invDenom; //precomputed constant
+        int x = x1, y = y1;
+        int i;
+        IntensifyPixel(x, y, thickness, 0);
+        for (i=1; IntensifyPixel(x, y+i, thickness, i*two_dx_invDenom); ++i);
+        for (i=1; IntensifyPixel(x, y-i, thickness, i*two_dx_invDenom); ++i);
+        while ( x < x2 )
+        {
+            ++x;
+            if ( d < 0 ) // move to E
+            {
+                two_v_dx = d + dx;
+                d += dE;
+            }
+            else // move to NE
+            {
+                two_v_dx = d-dx;
+                d += dNE;
+                ++y;
+            }
+            // Now set the chosen pixel and its neighbors
+            IntensifyPixel(x, y, thickness, two_v_dx*invDenom);
+            for (i=1; IntensifyPixel(x, y+i, thickness, i*two_dx_invDenom - two_v_dx*invDenom); ++i);
+            for (i=1; IntensifyPixel(x, y-i, thickness, i*two_dx_invDenom + two_v_dx*invDenom); ++i);
+        }
+
+    }*/
     
     private void takePixelArrayFromBuffered(){
         for(int i=0; i<h; i++){
