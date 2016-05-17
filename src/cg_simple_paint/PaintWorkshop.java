@@ -73,7 +73,8 @@ public class PaintWorkshop extends javax.swing.JFrame {
         blueTxt = new javax.swing.JTextField();
         fillX = new javax.swing.JTextField();
         fillY = new javax.swing.JTextField();
-        btnFill = new javax.swing.JButton();
+        btnFourFill = new javax.swing.JButton();
+        btnEightFill = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,10 +133,17 @@ public class PaintWorkshop extends javax.swing.JFrame {
 
         fillY.setText("100");
 
-        btnFill.setText("fill");
-        btnFill.addActionListener(new java.awt.event.ActionListener() {
+        btnFourFill.setText("4-fill");
+        btnFourFill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFillActionPerformed(evt);
+                btnFourFillActionPerformed(evt);
+            }
+        });
+
+        btnEightFill.setText("8-fill");
+        btnEightFill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEightFillActionPerformed(evt);
             }
         });
 
@@ -144,8 +152,8 @@ public class PaintWorkshop extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(circleX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -157,11 +165,7 @@ public class PaintWorkshop extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(circleR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addGap(25, 25, 25))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -189,19 +193,22 @@ public class PaintWorkshop extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(greenTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(blueTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(blueTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(25, 25, 25))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnFourFill, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fillX, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fillY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnEightFill, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(fillX, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fillY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnFill, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +248,9 @@ public class PaintWorkshop extends javax.swing.JFrame {
                     .addComponent(fillX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fillY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnFill)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFourFill)
+                    .addComponent(btnEightFill))
                 .addContainerGap(216, Short.MAX_VALUE))
         );
 
@@ -287,7 +296,7 @@ public class PaintWorkshop extends javax.swing.JFrame {
         this.repaint();
     }//GEN-LAST:event_btnAddCircleActionPerformed
 
-    private void btnFillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFillActionPerformed
+    private void btnFourFillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFourFillActionPerformed
         int x,y,r,g,b;
         x = Integer.parseInt(fillX.getText());
         y = Integer.parseInt(fillY.getText());
@@ -295,9 +304,21 @@ public class PaintWorkshop extends javax.swing.JFrame {
         g = Integer.parseInt(greenTxt.getText());
         b = Integer.parseInt(blueTxt.getText());
         
-        image = fill.flood(x, y, new Color(0,0,0), new Color(r,g,b), image);
+        image = fill.fourFlood(x, y, new Color(0,0,0), new Color(r,g,b), image);
         this.repaint();
-    }//GEN-LAST:event_btnFillActionPerformed
+    }//GEN-LAST:event_btnFourFillActionPerformed
+
+    private void btnEightFillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEightFillActionPerformed
+        int x,y,r,g,b;
+        x = Integer.parseInt(fillX.getText());
+        y = Integer.parseInt(fillY.getText());
+        r = Integer.parseInt(redTxt.getText());
+        g = Integer.parseInt(greenTxt.getText());
+        b = Integer.parseInt(blueTxt.getText());
+        
+        image = fill.eightFlood(x, y, new Color(0,0,0), new Color(r,g,b), image);
+        this.repaint();
+    }//GEN-LAST:event_btnEightFillActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,7 +360,8 @@ public class PaintWorkshop extends javax.swing.JFrame {
     private javax.swing.JButton btnAddCircle;
     private javax.swing.JButton btnAddLine;
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnFill;
+    private javax.swing.JButton btnEightFill;
+    private javax.swing.JButton btnFourFill;
     private javax.swing.JTextField circleR;
     private javax.swing.JTextField circleX;
     private javax.swing.JTextField circleY;

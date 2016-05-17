@@ -23,32 +23,58 @@ public class RegionFiller {
     private FillPixel[][] pixels;
     
     
-    public BufferedImage flood(int x, int y, Color boundaryColor, Color newColor, BufferedImage img){
-    initImage(img);
-    
-    Queue<Point> queue = new LinkedList<Point>();
-    queue.add(new Point(x, y));
-    
-    while(!queue.isEmpty()){
-        Point p = queue.remove();
+    public BufferedImage eightFlood(int x, int y, Color boundaryColor, Color newColor, BufferedImage img){
+        initImage(img);
 
-        if ((p.x >= 0) && (p.x < w && (p.y >= 0) && (p.y < h))) {
-            if (!pixels[p.x][p.y].isColored() && !isBoundary(boundaryColor, pixels[p.x][p.y].getColor())) {
-                pixels[p.x][p.y].setColored(true);
-                pixels[p.x][p.y].setColor(newColor);
+        Queue<Point> queue = new LinkedList<Point>();
+        queue.add(new Point(x, y));
 
-                queue.add(new Point(p.x + 1, p.y));
-                queue.add(new Point(p.x - 1, p.y));
-                queue.add(new Point(p.x, p.y + 1));
-                queue.add(new Point(p.x, p.y - 1));
-            }
+        while(!queue.isEmpty()){
+            Point p = queue.remove();
+
+            if ((p.x >= 0) && (p.x < w && (p.y >= 0) && (p.y < h))) {
+                if (!pixels[p.x][p.y].isColored() && !isBoundary(boundaryColor, pixels[p.x][p.y].getColor())) {
+                    pixels[p.x][p.y].setColored(true);
+                    pixels[p.x][p.y].setColor(newColor);
+
+                    queue.add(new Point(p.x + 1, p.y));
+                    queue.add(new Point(p.x + 1, p.y + 1));
+                    queue.add(new Point(p.x + 1, p.y - 1));
+                    queue.add(new Point(p.x - 1, p.y));
+                    queue.add(new Point(p.x, p.y + 1));
+                    queue.add(new Point(p.x, p.y - 1));
+                    queue.add(new Point(p.x - 1, p.y + 1));
+                    queue.add(new Point(p.x - 1, p.y - 1));
+                }
+            }    
         }
-    
-    
+        updateBufferedImage();
+        return image;
     }
-    
-    updateBufferedImage();
-    return image;
+    public BufferedImage fourFlood(int x, int y, Color boundaryColor, Color newColor, BufferedImage img){
+        initImage(img);
+
+        Queue<Point> queue = new LinkedList<Point>();
+        queue.add(new Point(x, y));
+
+        while(!queue.isEmpty()){
+            Point p = queue.remove();
+
+            if ((p.x >= 0) && (p.x < w && (p.y >= 0) && (p.y < h))) {
+                if (!pixels[p.x][p.y].isColored() && !isBoundary(boundaryColor, pixels[p.x][p.y].getColor())) {
+                    pixels[p.x][p.y].setColored(true);
+                    pixels[p.x][p.y].setColor(newColor);
+
+                    queue.add(new Point(p.x + 1, p.y));
+                    queue.add(new Point(p.x - 1, p.y));
+                    queue.add(new Point(p.x, p.y + 1));
+                    queue.add(new Point(p.x, p.y - 1));
+                }
+            }    
+        }
+
+        updateBufferedImage();
+        return image;
     }
     
     private boolean isBoundary(Color boundaryColor, Color c){
