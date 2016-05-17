@@ -122,11 +122,11 @@ public class PaintWorkshop extends javax.swing.JFrame {
 
         jLabel5.setText("FILLING AREAS");
 
-        redTxt.setText("Red");
+        redTxt.setText("0");
 
-        greenTxt.setText("Green");
+        greenTxt.setText("0");
 
-        blueTxt.setText("Blue");
+        blueTxt.setText("255");
 
         fillX.setText("100");
 
